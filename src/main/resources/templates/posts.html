@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Spring Boot Thymeleaf Example</title>
+
+<link href="..\static\css\bootstrap.min.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.css}" />
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+		<a class="navbar-brand" href="#">Ejercicio Julian</a>
+	</nav>
+
+	<main role="main" class="container">
+
+	<div class="starter-template">
+		<h1>Spring Boot Web Thymeleaf Example</h1>
+		<h2>
+			<span> PROBANDO </span>
+		</h2>
+	</div>
+	<div >
+		<table class="table table-striped">
+			<tr>
+				<th>Tittle</th>
+				<th>Text</th>
+				<th>User</th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr th:each="post : ${postslist}">
+				<td th:text="${post.tittle}"></td>
+				<td th:text="${post.text}"></td>
+				<td th:text="${post.user.username}"></td>
+				<td><a class="btn btn-warning" th:href="@{'/post/edit/'+${post.id}}" > MODIFICAR </a> </td> 
+				<td><a class="btn btn-danger" th:href="@{'/post/delete/'+${post.id}}" > ELIMINAR </a> </td>  
+				
+				
+			</tr>
+		</table>
+		
+		<a class="btn btn-primary" href="posts/new" > CREAR </a>
+
+	</div>
+
+	</main>
+	<!-- /.container -->
+	<!-- 
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+	 -->
+</body>
+</html>

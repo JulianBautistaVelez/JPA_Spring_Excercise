@@ -30,7 +30,7 @@ public class Post {
 	
 	
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(int id) {
@@ -38,7 +38,7 @@ public class Post {
 	}
 
 	public String getTittle() {
-		return tittle;
+		return this.tittle;
 	}
 
 	public void setTittle(String tittle) {
@@ -47,7 +47,7 @@ public class Post {
 
 	
 	public User getUser() {
-		return user;
+		return this.user;
 	}
 
 
@@ -57,7 +57,7 @@ public class Post {
 
 
 	public String getText() {
-		return text;
+		return this.text;
 	}
 
 	public void setText(String text) {

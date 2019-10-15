@@ -1,6 +1,9 @@
 package com.julian.bootmvchibernate.controller;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.julian.bootmvchibernate.model.Post;
 import com.julian.bootmvchibernate.model.User;
@@ -122,6 +127,27 @@ public class EjercicioController {
 		logger.info("-- en DELETE");
 		postService.delete(id);
 		return "redirect:/posts";
+	}
+	/******************************METODOS CHAPUZA QUE FUNCIONAN**********************************************************/
+	@RequestMapping(value = "/posts/new/mod")
+	public String createPostMod(Model model) {
+		logger.info("-- en SAVE");
+		model.addAttribute("newPost", new Post());
+		model.addAttribute("users", userService.list());
+		return "addPost";
+	}
+	
+	@RequestMapping(value = "/posts/new/mod", method = RequestMethod.POST)
+	public String newPostMod(Model model, @Valid @ModelAttribute("newPost") Post newPost, BindingResult result) {
+		 if(result.hasErrors()){
+			 
+		        int idUsuario = Integer.parseInt((String) result.getFieldError().getRejectedValue());
+		        newPost.setUser(userService.get(idUsuario));
+		        postService.add(newPost);
+		    }else {
+		        postService.add(newPost);
+		    }
+		return "redirect:/posts";		
 	}
 	
 	

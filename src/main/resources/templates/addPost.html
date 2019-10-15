@@ -24,9 +24,10 @@
 	</div>
 	<div>
 		<table>
-			<form th:action="@{/savePost}" th:object="${post}" method="post">
+			<form th:action="@{/posts/new/mod}" th:object="${newPost}"
+				method="POST">
 				<tr>
-					<td><input type="hidden" th:field="${post.id}" /></td>
+					<td><input type="hidden" th:field="${newPost.id}" /></td>
 				</tr>
 				<tr>
 					<td>Titulo</td>
@@ -34,21 +35,20 @@
 					<td>Usuario</td>
 				</tr>
 				<tr>
-					<td><input type="text" th:field="${post.tittle}"
-						th:value="${post.tittle}" /></td>
-					<td><input type="text" th:field="${post.text}"
-						th:value="${post.text}" /></td>
-					<!-- 
-					<td><select th:field="${post.user}">
+					<td><input type="text" th:field="${newPost.tittle}"
+						th:value="${newPost.tittle}" /></td>
+					<td><input type="text" th:field="${newPost.text}"
+						th:value="${newPost.text}" /></td>
+
+					<!-- <td><select th:field="${newPost.user}">
 							<option th:each="user : ${users}" th:text="${user.username}"
 								th:value="${user.id}"></option>
+					</select></td> -->
+
+					<td><select th:field="*{user}" class="form-control">
+						<option th:each="user: ${users}"
+							th:value="${user.id}" th:text="${user.username}"></option>
 					</select></td>
- -->
-					<td><select id="postUser" name="user" th:field="${post.user}"
-						required="true" />
-						<option th:value="''" th:text="Select"></option>
-						<option th:each="user : ${users}" th:value="${user.id}"
-							th:text="${user.username}"></option> </select></td>
 
 
 				</tr>
@@ -59,6 +59,7 @@
 
 			</form>
 		</table>
+
 
 	</div>
 

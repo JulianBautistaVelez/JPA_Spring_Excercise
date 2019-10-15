@@ -13,7 +13,7 @@ public class BootmvchibernateApplication implements WebMvcConfigurer{
 	 @SuppressWarnings("unchecked")
 		@Override
 	    public void addFormatters(FormatterRegistry registry) {
-		  registry.addFormatter(new UserFormatter());
+		  //registry.addFormatter(new UserFormatter());
 	    }
 	 
 	 

@@ -35,9 +35,9 @@
 				<th></th>
 			</tr>
 			<tr th:each="post : ${postslist}">
-				<td th:text="${post.tittle}"></td>
-				<td th:text="${post.text}"></td>
-				<td th:text="${post.user.username}"></td>
+				<td th:if="${post.tittle}" th:text="${post.tittle}"></td>
+				<td th:if="${post.text}" th:text="${post.text}"></td>
+				<td th:if="${post.user}" th:text="${post.user.username}"></td>
 				<td><a class="btn btn-warning" th:href="@{'/post/edit/'+${post.id}}" > MODIFICAR </a> </td> 
 				<td><a class="btn btn-danger" th:href="@{'/post/delete/'+${post.id}}" > ELIMINAR </a> </td>  
 				
@@ -45,7 +45,7 @@
 			</tr>
 		</table>
 		
-		<a class="btn btn-primary" href="posts/new" > CREAR </a>
+		<a class="btn btn-primary" href="posts/new/mod" > CREAR </a>
 
 	</div>
 

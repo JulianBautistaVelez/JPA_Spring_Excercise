@@ -45,7 +45,7 @@
 								th:value="${user.id}"></option>
 					</select></td> -->
 
-					<td><select th:field="*{user}" class="form-control">
+					<td><select type="number" th:field="*{user}" class="form-control">
 						<option th:each="user: ${users}"
 							th:value="${user.id}" th:text="${user.username}"></option>
 					</select></td>

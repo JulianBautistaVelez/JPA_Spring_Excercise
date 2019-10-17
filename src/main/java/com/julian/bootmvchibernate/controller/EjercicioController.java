@@ -140,11 +140,12 @@ public class EjercicioController {
 	@RequestMapping(value = "/posts/new/mod", method = RequestMethod.POST)
 	public String newPostMod(Model model, @Valid @ModelAttribute("newPost") Post newPost, BindingResult result) {
 		 if(result.hasErrors()){
-			 
+			 System.out.println("---INSERTANDO CON ERRORES---");
 		        int idUsuario = Integer.parseInt((String) result.getFieldError().getRejectedValue());
 		        newPost.setUser(userService.get(idUsuario));
 		        postService.add(newPost);
 		    }else {
+		    	System.out.println("---INSERTANDO SIN ERRORES---");
 		        postService.add(newPost);
 		    }
 		return "redirect:/posts";		

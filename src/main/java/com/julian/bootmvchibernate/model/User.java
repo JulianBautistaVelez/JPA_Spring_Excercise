@@ -11,6 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+import com.julian.bootmvchibernate.dao.GeneralDAO;
 import com.julian.bootmvchibernate.model.Post;
 
 @Entity
@@ -32,6 +37,7 @@ public class User {
 	
 	@OneToMany(fetch= FetchType.LAZY, mappedBy="user", cascade = CascadeType.ALL)
     private List<Post> posts;
+
 	
 	
 	public User() {
